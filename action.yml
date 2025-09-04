@@ -19,12 +19,15 @@ runs:
         case "${{ runner.os }}-${{ runner.arch }} in
           "Windows-X64")
             archive_name=windows-amd64
+            archive_extension=zip
             ;;
           "Linux-X64")
             archive_name=linux-x86_64
+            archive_extension=tar.gz
             ;;
           "Linux-ARM64")
             archive_name=linux-aarch64
+            archive_extension=tar.gz
             ;;
           *)
             exit 1
@@ -32,3 +35,4 @@ runs:
         esac
 
         echo "codee_archive=${archive_name}" >> $GITHUB_OUTPUT
+        echo "codee_archive_extension=${archive_extension}" >> $GITHUB_OUTPUT
