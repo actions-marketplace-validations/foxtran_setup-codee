@@ -46,7 +46,7 @@ runs:
       shell: bash
       run: |
         if [[ "${{ steps.mapping.outputs.codee_archive_extension }}" == "zip" ]]; then
-          unzip /tmp/codee.zip -d /tmp/codee-tmp
+          unzip -qq /tmp/codee.zip -d /tmp/codee-tmp
           mv /tmp/codee-tmp/* /tmp/codee/
           rm -rf /tmp/codee-tmp
         else
