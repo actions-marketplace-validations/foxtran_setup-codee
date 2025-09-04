@@ -16,7 +16,7 @@ runs:
       id: mapping
       shell: bash
       run: |
-        case "${{ runner.os }}-${{ runner.arch }} in
+        case "${{ runner.os }}-${{ runner.arch }}" in
           "Windows-X64")
             archive_name=windows-amd64
             archive_extension=zip
