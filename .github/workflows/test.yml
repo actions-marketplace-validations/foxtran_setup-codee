@@ -1,0 +1,31 @@
+name: Test Codee Formatter action
+
+on:
+  push:
+    tags-ignore:
+      - v**
+  pull_request:
+    branches:
+      - master
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Run Setup Codee action
+        uses: ./
+
+      - name: List of Codee files
+        shell: bash
+        run: |
+          echo "Contents of /tmp/codee/:"
+          ls -la /tmp/codee/
