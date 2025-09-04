@@ -48,7 +48,7 @@ runs:
         if [[ "${{ steps.mapping.outputs.codee_archive_extension }}" == "zip" ]]; then
           unzip /tmp/codee.zip -d /tmp/codee-tmp
           mv /tmp/codee-tmp/* /tmp/codee/
-          rm -f /tmp/codee-tmp
+          rm -rf /tmp/codee-tmp
         else
           mkdir -p /tmp/codee/
           tar --strip-components=1 -xzf /tmp/codee.tar.gz  -C /tmp/codee
