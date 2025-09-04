@@ -45,7 +45,7 @@ runs:
     - name: Extract Codee artifact
       shell: bash
       run: |
-        if [[ "${{ steps.mapping.outputs.codee_archive_extension }}" ]]; then
+        if [[ "${{ steps.mapping.outputs.codee_archive_extension }}" == "zip" ]]; then
           unzip /tmp/codee.zip -d /tmp/codee-tmp
           mv /tmp/codee-tmp/* /tmp/codee/
           rm -f /tmp/codee-tmp
