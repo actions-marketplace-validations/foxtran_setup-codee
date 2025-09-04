@@ -29,3 +29,7 @@ jobs:
         run: |
           echo "Contents of /tmp/codee/:"
           ls -la /tmp/codee/
+
+      - name: Check Codee binary
+        shell: bash
+        run: codee --help
