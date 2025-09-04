@@ -28,7 +28,7 @@ jobs:
         shell: bash
         run: |
           echo "Contents of /tmp/codee/:"
-          ls -la /tmp/codee/
+          ls -la ${RUNNER_TEMP}/codee/
 
       - name: Check Codee binary (bash)
         shell: bash
