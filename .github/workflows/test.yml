@@ -30,6 +30,10 @@ jobs:
           echo "Contents of /tmp/codee/:"
           ls -la /tmp/codee/
 
-      - name: Check Codee binary
+      - name: Check Codee binary (bash)
         shell: bash
+        run: codee --help
+
+      - name: Check Codee binary (pwsh)
+        shell: pwsh
         run: codee --help
