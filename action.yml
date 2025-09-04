@@ -41,3 +41,15 @@ runs:
       shell: bash
       run: |
         curl -L -o /tmp/codee.${{ steps.mapping.outputs.codee_archive_extension }} https://codee.com/release/codee-2025.3.5-${{ steps.mapping.outputs.codee_archive }}.${{ steps.mapping.outputs.codee_archive_extension }}
+
+    - name: Extract Codee artifact
+      shell: bash
+      run: |
+        if [[ "${{ steps.mapping.outputs.codee_archive_extension }} ]]; then
+          unzip /tmp/codee.zip -d /tmp/codee-tmp
+          mv /tmp/codee-tmp/* /tmp/codee/
+          rm -f /tmp/codee-tmp
+        else
+          mkdir -p /tmp/codee/
+          tar --strip-components=1 -xzf /tmp/codee.tar.gz  -C /tmp/codee
+        fi
