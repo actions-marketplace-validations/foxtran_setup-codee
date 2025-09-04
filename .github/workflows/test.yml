@@ -1,4 +1,4 @@
-name: Test Codee Formatter action
+name: Test Setup Codee action
 
 on:
   push:
