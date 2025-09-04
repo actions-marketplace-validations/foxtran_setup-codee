@@ -53,3 +53,7 @@ runs:
           mkdir -p /tmp/codee/
           tar --strip-components=1 -xzf /tmp/codee.tar.gz  -C /tmp/codee
         fi
+
+    - name: Add Codee binaries to PATH
+      shell: bash
+      run: echo "/tmp/codee/bin" >> $GITHUB_PATH
