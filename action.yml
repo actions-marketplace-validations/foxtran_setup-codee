@@ -36,3 +36,8 @@ runs:
 
         echo "codee_archive=${archive_name}" >> $GITHUB_OUTPUT
         echo "codee_archive_extension=${archive_extension}" >> $GITHUB_OUTPUT
+
+    - name: Download Codee artifact
+      shell: bash
+      run: |
+        curl -L -o /tmp/codee.${{ steps.mapping.outputs.codee_archive_extension }} https://codee.com/release/codee-2025.3.5-${{ steps.mapping.outputs.codee_archive }}.${{ steps.mapping.outputs.codee_archive_extension }}
