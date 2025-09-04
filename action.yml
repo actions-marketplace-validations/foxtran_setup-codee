@@ -46,8 +46,9 @@ runs:
       shell: bash
       run: |
         if [[ "${{ steps.mapping.outputs.codee_archive_extension }}" == "zip" ]]; then
+          TOP_DIR=$(unzip -qql "${RUNNER_TEMP}/codee.zip" | head -n1 | awk '{print $4}' | cut -d/ -f1)
           unzip -qq ${RUNNER_TEMP}/codee.zip -d ${RUNNER_TEMP}/codee-tmp
-          mv ${RUNNER_TEMP}/codee-tmp/* ${RUNNER_TEMP}/codee/
+          mv ${RUNNER_TEMP}/codee-tmp/${TOP_DIR}/ ${RUNNER_TEMP}/codee/
           rm -rf ${RUNNER_TEMP}/codee-tmp
         else
           mkdir -p ${RUNNER_TEMP}/codee/
