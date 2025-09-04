@@ -6,7 +6,7 @@ runs:
   using: composite
   steps:
     - name: Check platform compability
-      if: ${{ !(runner.os == 'Windows' && runner.arch == 'X64') || (runner.os == 'Linux' && (runner.arch == 'X64' || runner.arch == 'ARM64')) }}
+      if: ${{ !((runner.os == 'Windows' && runner.arch == 'X64') || (runner.os == 'Linux' && (runner.arch == 'X64' || runner.arch == 'ARM64'))) }}
       shell: bash
       run: |
         echo "Not supported combination of OS & Arch: ${{ runner.os }} & ${{ runner.arch }}"
