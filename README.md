@@ -1,5 +1,9 @@
 # Setup Codee
 
+
+[![Test](https://github.com/foxtran/setup-codee/actions/workflows/test.yml/badge.svg)](https://github.com/foxtran/setup-codee/actions/workflows/test.yml)
+
+
 Set up a Codee Formatter & Analyser on Linux and Windows runners.
 
 - [Usage](#usage)
