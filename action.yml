@@ -11,3 +11,24 @@ runs:
       run: |
         echo "Not supported combination of OS & Arch: ${{ runner.os }} & ${{ runner.arch }}"
         exit 1
+
+    - name: Match runner platform with Codee artifact
+      id: mapping
+      shell: bash
+      run: |
+        case "${{ runner.os }}-${{ runner.arch }} in
+          "Windows-X64")
+            archive_name=windows-amd64
+            ;;
+          "Linux-X64")
+            archive_name=linux-x86_64
+            ;;
+          "Linux-ARM64")
+            archive_name=linux-aarch64
+            ;;
+          *)
+            exit 1
+            ;;
+        esac
+
+        echo "codee_archive=${archive_name}" >> $GITHUB_OUTPUT
