@@ -2,6 +2,12 @@ name: "Setup Codee"
 description: "Setup Codee Analyzer & Formatter"
 author: "Igor S. Gerasimov"
 
+inputs:
+  version:
+    description: "Version of Codee"
+    required: false
+    default: 2025.3.5
+
 runs:
   using: composite
   steps:
@@ -40,14 +46,14 @@ runs:
     - name: Download Codee artifact
       shell: bash
       run: |
-        curl -L -o ${RUNNER_TEMP}/codee.${{ steps.mapping.outputs.codee_archive_extension }} https://codee.com/release/codee-2025.3.5-${{ steps.mapping.outputs.codee_archive }}.${{ steps.mapping.outputs.codee_archive_extension }}
+        curl -L -o ${RUNNER_TEMP}/codee.${{ steps.mapping.outputs.codee_archive_extension }} https://codee.com/release/codee-${{ inputs.version }}-${{ steps.mapping.outputs.codee_archive }}.${{ steps.mapping.outputs.codee_archive_extension }}
 
     - name: Extract Codee artifact
       shell: bash
       run: |
         if [[ "${{ steps.mapping.outputs.codee_archive_extension }}" == "zip" ]]; then
           unzip -qq ${RUNNER_TEMP}/codee.zip -d ${RUNNER_TEMP}/codee-tmp
-          mv ${RUNNER_TEMP}/codee-tmp/codee-2025.3.5-${{ steps.mapping.outputs.codee_archive }}/ ${RUNNER_TEMP}/codee/
+          mv ${RUNNER_TEMP}/codee-tmp/codee-${{ inputs.version }}-${{ steps.mapping.outputs.codee_archive }}/ ${RUNNER_TEMP}/codee/
           rm -rf ${RUNNER_TEMP}/codee-tmp
         else
           mkdir -p ${RUNNER_TEMP}/codee/
