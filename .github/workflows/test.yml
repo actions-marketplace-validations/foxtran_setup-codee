@@ -27,7 +27,7 @@ jobs:
       - name: List of Codee files
         shell: bash
         run: |
-          echo "Contents of /tmp/codee/:"
+          echo "Contents of ${RUNNER_TEMP}/codee/:"
           ls -la ${RUNNER_TEMP}/codee/
 
       - name: Check Codee binary (bash)
